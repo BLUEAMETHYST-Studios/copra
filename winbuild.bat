@@ -1,1 +1,1 @@
-:: Indev
+pyinstaller --noconfirm --onedir --console "windows/copra.py" --icon "copra.ico"
