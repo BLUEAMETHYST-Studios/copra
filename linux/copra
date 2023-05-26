@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+
+from subprocess import run
+from sys import argv
+
+start = ["python3", "/usr/bin/.copra/copra.py"]
+
+for a in argv[1:]:
+    start.append(a)
+    
+run(start, shell=True)

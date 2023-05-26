@@ -1,0 +1,8 @@
+** Starting script
+
+** Importing libs
+use sys
+use subprocess
+
+echo("doing stuff ...")
+
