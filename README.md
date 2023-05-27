@@ -11,7 +11,7 @@ it tries to make the Python experience better, by offering another syntax to wor
 
 ### How can I install it?
 
-You can't but, you'll find a guide in the INSTALLATION.md
+You currently can't, but when it is ready you'll find a guide in the [INSTALLATION.md](https://github.com/BLUEAMETHYST-Studios/copra/blob/main/INSTALLATION.md)
 
 ## Compiler Progress
 
