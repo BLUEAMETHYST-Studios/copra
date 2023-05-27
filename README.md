@@ -22,12 +22,12 @@ You currently can't, but when it is ready you'll find a guide in the [INSTALLATI
 - [ ] Keyword: elseif
 - [ ] Keyword: else
 - [ ] Keyword: !
-- [ ] Keyword: &&
+- [x] Keyword: &&
 - [ ] Keyword: or
 - [ ] Keyword: for
 - [ ] Keyword: fn
 - [ ] Keyword: cl
-- [ ] Keyword: it
+- [x] Keyword: it
 - [ ] Keyword: kill
 - [ ] Keyword: break
 - [ ] Keyword: continue
