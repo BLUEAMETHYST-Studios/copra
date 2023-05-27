@@ -1,4 +1,4 @@
-if [[ $USER == "root" ]] then
+if [[ $USER != "root" ]] then
 
 echo -e "\e[31mPlease execute as root (sudo)!\e[0m"
 exit
