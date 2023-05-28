@@ -1,4 +1,4 @@
-from sys import argv, exit
+from sys import argv, exit, stdout
 from colorama import init, Fore
 from subprocess import run
 
@@ -50,8 +50,8 @@ for c in file:
     chars.append(c)
     progressnum += 1
 
-progressnum = 0
+progressnum = 1
 
-
+strList.sort(reverse=True)
 
 
