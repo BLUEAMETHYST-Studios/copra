@@ -1,7 +1,11 @@
 from sys import argv, exit
 from colorama import init, Fore
+from subprocess import run
 
 init(autoreset=True)
+
+if "-log" in argv[2:]:
+    run(["_copra_log_.bat", argv[1], argv[argv.index("-log") + 1]])
 
 if len(argv) < 2:
     print(f"{Fore.RED}[FAIL] Not enough arguments provided!")
@@ -15,31 +19,39 @@ except FileNotFoundError:
     print(f"{Fore.RED}[FAIL] File not found!")
     exit()
 
-
 stringInstance = ["Any", False]
+index = 0
+strList = []
 
-class Lexer():
-    def __init__(self, token):
-        self.token = token
-    def strLexer(self):
-        if stringInstance == ["Any", False] and self.token == "'":
-            stringInstance = ["'", True]
-        elif stringInstance == ["Any", False] and self.token == '"':
-            stringInstance = ['"', True]
-        elif stringInstance == ["'", True] and self.token == "'":
-            stringInstance = ["Any", False]
-        elif stringInstance == ['"', True] and self.token == '"':
-            stringInstance = ["Any", False]
-        else:
-            if stringInstance[1] == True:
-                return True
-            elif stringInstance[1] == False:
-                return False
-    def intLexer(self):
-        if Lexer(self.token).strLexer() == True:
-            return False
-        else:
-            return True
-    def decLexer(self):
-        if Lexer(self.token).intLexer() == True:
+for char in file:
+    print(f"{Fore.WHITE}[INFO] Checking character {index + 1}")
+    if stringInstance[1] == True:
+        if stringInstance[0] == char:
             ...
+        else:
+            strList.append(index)
+    if stringInstance[1] == False:
+        if char == "'" or char == '"':
+            stringInstance = [char, True]
+    elif stringInstance[1] == True:
+        if char == "'" or char == '"':
+            if char == stringInstance[0]:
+                stringInstance = ["Any", False]
+                print(f"{Fore.WHITE}[INFO] End of string in char {index + 1}")
+            else:
+                print(f"{Fore.WHITE}[INFO] {char} isn't ending string due to the string start being {stringInstance[0]}")    
+    index += 1
+
+chars = []
+progressnum = 1
+
+for c in file:
+    print(f"{Fore.WHITE}[INFO] Preparing: {progressnum}/{len(file)}")
+    chars.append(c)
+    progressnum += 1
+
+progressnum = 0
+
+
+
+
