@@ -1,12 +1,18 @@
-from sys import argv, exit, stdout
+from sys import argv, exit
 from colorama import init, Fore
-from subprocess import run
-from re import findall
 
 init(autoreset=True)
 
-if "-log" in argv[2:]:
-    run(["_copra_log_.bat", argv[1], argv[argv.index("-log") + 1]])
+    
+if "-o" in argv[2:]:
+    try:
+        filename = argv[argv.index("-o") + 1]
+    except IndexError:
+        print(f"{Fore.RED}[FAIL] No output filename (or path) provided.")
+        exit()
+else:
+    filename = "output.py"
+    print(f"{Fore.WHITE}[INFO] File name will be output.py, because no output file was set")
 
 if len(argv) < 2:
     print(f"{Fore.RED}[FAIL] Not enough arguments provided!")
@@ -69,24 +75,33 @@ charsreplaced = charsstr.replace("use", "import").replace("&&", "and").replace("
 
 print(f"{Fore.WHITE}[INFO] Compiling brackets ...")
 
+
+charsreplaced_lines = charsreplaced.splitlines()
+charsfinished_lines = []
 indentation = 0
 
-lines = charsreplaced.splitlines()
+for line in charsreplaced_lines:
+    stripped_line = line.strip()
+    
+    if stripped_line == "}":
+        indentation -= 1
+        if indentation < 0:
+            # print(f"{Fore.LIGHTRED_EX}[WARN] A not needed closing bracket was found.") ( bugged right now :-( )
+            indentation = 0
+        continue
+    
+    indented_line = " " * (indentation * 4) + stripped_line
+    
+    if stripped_line == "{":
+        indentation += 1
 
-#for line in lines:
-#    opening_brackets = len(findall(r'{', line))
-#    closing_brackets = len(findall(r'}', line))
-#
-#    indentation += opening_brackets
-#    indentation -= closing_brackets
-#    if indentation < 0:
-#        print(f"{Fore.LIGHTRED_EX}[WARN] A not needed closing bracket was found.")
-#
-#    indentation = max(0, indentation)
-#
-#    charsreplaced = " " * (indentation * 4) + line
+    charsfinished_lines.append(indented_line)
+    
+charsfinished = "\n".join(charsfinished_lines)
 
 charsfinished = charsreplaced
+
+charsfinished = charsfinished.replace("}", "").replace("{", "")
 
 print(f"{Fore.WHITE}[INFO] Finishing string compilation process ...")
 charsfinished = charsfinished.replace("'", '"')
@@ -97,16 +112,32 @@ for string in strListasStr:
     else:
         charsfinished = charsfinished.replace('""', f'"{string}"', 1)
 
+print(f"{Fore.WHITE}[INFO] Removing empty lines ...")
+
+charsfinishedlines = charsfinished.splitlines()
+
+index = 0
+
+for line in charsfinishedlines:
+    if line.isspace() or line == "":
+        charsfinishedlines.pop(index)
+    index += 1
+
+charsfinished = ""
+
+for finalline in charsfinishedlines:
+    finalline = finalline + "\n"
+    charsfinished = charsfinished + finalline
+
+print(charsfinishedlines)
+
 print(f"{Fore.WHITE}[INFO] Writing to file ...")
-with open("output.py", "w") as output:
-    output.write(charsfinished)
-    output.close()
+
+try:
+    with open(f"{filename}", "w") as output:
+        output.write(charsfinished)
+        output.close()
+except FileExistsError:
+    print(f"{Fore.RED}[FAIL] File with name {filename}")
     
 print(f"{Fore.WHITE}[INFO] Compilation process {Fore.LIGHTGREEN_EX}COMPLETED{Fore.WHITE}!")
-        
-
-
-
-    
-    
-

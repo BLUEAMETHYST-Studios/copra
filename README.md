@@ -13,9 +13,27 @@ it tries to make the Python experience better, by offering another syntax to wor
 
 You currently can't, but when it is ready you'll find a guide in the [INSTALLATION.md](https://github.com/BLUEAMETHYST-Studios/copra/blob/main/INSTALLATION.md)
 
+## Using it.
+
+### Basic compilation of a copra script:
+
+```
+copra {filename}
+```
+
+### If you want to add more arguments:
+
+```
+copra {filename} {additional-arguments}
+```
+
+### The -o argument
+
+When you place an -o argument after the basic starting arguments, the argument after the -o argument must be the path to the new output file.
+
 ## Compiler Progress
 
-- [ ] Basic Lexer (**WIP**)
+- [x] Basic Lexer (**WIP**)
 - [x] Keyword: use
 - [x] Keyword: while
 - [x] Keyword: if
@@ -33,7 +51,7 @@ You currently can't, but when it is ready you'll find a guide in the [INSTALLATI
 - [x] Keyword: continue
 - [x] Keyword: return
 - [x] Keyword: catch
-- [ ] Context: {}
+- [x] Context: {}
 - [x] Comment: ::
 - [x] Boolean: true
 - [x] Boolean: false
