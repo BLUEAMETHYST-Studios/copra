@@ -1,6 +1,7 @@
 from sys import argv, exit, stdout
 from colorama import init, Fore
 from subprocess import run
+from re import findall
 
 init(autoreset=True)
 
@@ -62,20 +63,50 @@ for sl in strList:
 
 for ch in chars:
     charsstr = charsstr + ch
-    
+
+print(f"{Fore.WHITE}[INFO] Compiling keywords ...")
 charsreplaced = charsstr.replace("use", "import").replace("&&", "and").replace("::", "#").replace("!!", "not").replace("elseif", "elif").replace("fn", "def").replace("cl", "class").replace("it", "self").replace("kill", "exit()").replace("true", "True").replace("false", "False").replace("none", "None").replace("catch", "except")
+
+print(f"{Fore.WHITE}[INFO] Compiling brackets ...")
 
 indentation = 0
 
-for check in charsreplaced.splitlines():
-    if check == "{":
-        indentation += 4
-    elif check == "}":
-        indentation -= 4
-        if indentation < 0:
-            print(f"{Fore.LIGHTRED_EX}[WARN] A not needed close bracket was found.")
-            indentation = 0
+lines = charsreplaced.splitlines()
+
+#for line in lines:
+#    opening_brackets = len(findall(r'{', line))
+#    closing_brackets = len(findall(r'}', line))
+#
+#    indentation += opening_brackets
+#    indentation -= closing_brackets
+#    if indentation < 0:
+#        print(f"{Fore.LIGHTRED_EX}[WARN] A not needed closing bracket was found.")
+#
+#    indentation = max(0, indentation)
+#
+#    charsreplaced = " " * (indentation * 4) + line
+
+charsfinished = charsreplaced
+
+print(f"{Fore.WHITE}[INFO] Finishing string compilation process ...")
+charsfinished = charsfinished.replace("'", '"')
+
+for string in strListasStr:
+    if '"' in string:
+        charsfinished = charsfinished.replace('""', f"'{string}'", 1)
+    else:
+        charsfinished = charsfinished.replace('""', f'"{string}"', 1)
+
+print(f"{Fore.WHITE}[INFO] Writing to file ...")
+with open("output.py", "w") as output:
+    output.write(charsfinished)
+    output.close()
     
+print(f"{Fore.WHITE}[INFO] Compilation process {Fore.LIGHTGREEN_EX}COMPLETED{Fore.WHITE}!")
+        
+
+
+
     
     
 
