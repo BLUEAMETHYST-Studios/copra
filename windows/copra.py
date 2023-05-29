@@ -129,8 +129,6 @@ for finalline in charsfinishedlines:
     finalline = finalline + "\n"
     charsfinished = charsfinished + finalline
 
-print(charsfinishedlines)
-
 print(f"{Fore.WHITE}[INFO] Writing to file ...")
 
 try:
