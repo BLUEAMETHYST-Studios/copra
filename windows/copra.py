@@ -19,39 +19,63 @@ except FileNotFoundError:
     print(f"{Fore.RED}[FAIL] File not found!")
     exit()
 
+filelength = len(file) # for performance
+
 stringInstance = ["Any", False]
 index = 0
 strList = []
+strListasStr = []
 
+print(f"{Fore.WHITE}[INFO] Getting strings ...")
 for char in file:
-    print(f"{Fore.WHITE}[INFO] Checking character {index + 1}")
     if stringInstance[1] == True:
         if stringInstance[0] == char:
             ...
         else:
             strList.append(index)
+            strListasStr[len(strListasStr) - 1] = f"{strListasStr[len(strListasStr) - 1]}{char}"
     if stringInstance[1] == False:
         if char == "'" or char == '"':
             stringInstance = [char, True]
+            strListasStr.append("")
     elif stringInstance[1] == True:
         if char == "'" or char == '"':
             if char == stringInstance[0]:
                 stringInstance = ["Any", False]
-                print(f"{Fore.WHITE}[INFO] End of string in char {index + 1}")
-            else:
-                print(f"{Fore.WHITE}[INFO] {char} isn't ending string due to the string start being {stringInstance[0]}")    
     index += 1
 
 chars = []
-progressnum = 1
 
+print(f"{Fore.WHITE}[INFO] Preparing ...")
 for c in file:
-    print(f"{Fore.WHITE}[INFO] Preparing: {progressnum}/{len(file)}")
     chars.append(c)
-    progressnum += 1
 
-progressnum = 1
+
+fullchars = chars
+charswithoutstr = chars
+charsstr = ""
 
 strList.sort(reverse=True)
 
+for sl in strList:
+    charswithoutstr.pop(sl)
+
+for ch in chars:
+    charsstr = charsstr + ch
+    
+charsreplaced = charsstr.replace("use", "import").replace("&&", "and").replace("::", "#").replace("!!", "not").replace("elseif", "elif").replace("fn", "def").replace("cl", "class").replace("it", "self").replace("kill", "exit()").replace("true", "True").replace("false", "False").replace("none", "None").replace("catch", "except")
+
+indentation = 0
+
+for check in charsreplaced.splitlines():
+    if check == "{":
+        indentation += 4
+    elif check == "}":
+        indentation -= 4
+        if indentation < 0:
+            print(f"{Fore.LIGHTRED_EX}[WARN] A not needed close bracket was found.")
+            indentation = 0
+    
+    
+    
 

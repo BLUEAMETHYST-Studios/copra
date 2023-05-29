@@ -1,8 +1,17 @@
-** Starting script
+ :: Starting script
 
-** Importing libs
+:: Importing libs
 use sys
 use subprocess
 
-echo("doing stuff ...")
-
+if sys.argv[1] != "hello": {
+    if sys.argv[1] == "hi": {
+        print("hi.")
+    }
+    else: {
+    print("ok bye")
+    }
+} 
+else: {
+    print("hey!!!")
+}

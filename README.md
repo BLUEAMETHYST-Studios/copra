@@ -6,7 +6,7 @@ Copra is a compiled language, which compiles into Python code.
 
 ### Why, because Python is slow?
 
-It's simple, Copra isn't trying to be a new and **HUGE** language, \
+It's simple, Copra isn't trying to be a **HUGE** language, \
 it tries to make the Python experience better, by offering another syntax to work with.
 
 ### How can I install it?
@@ -18,32 +18,29 @@ You currently can't, but when it is ready you'll find a guide in the [INSTALLATI
 - [ ] Basic Lexer (**WIP**)
 - [x] Keyword: use
 - [x] Keyword: while
-- [ ] Keyword: if
-- [ ] Keyword: elseif
-- [ ] Keyword: else
-- [ ] Keyword: !
+- [x] Keyword: if
+- [x] Keyword: elseif
+- [x] Keyword: else
+- [x] Keyword: !!
 - [x] Keyword: &&
-- [ ] Keyword: or
-- [ ] Keyword: for
-- [ ] Keyword: fn
-- [ ] Keyword: cl
+- [x] Keyword: or
+- [x] Keyword: for
+- [x] Keyword: fn
+- [x] Keyword: cl
 - [x] Keyword: it
-- [ ] Keyword: kill
-- [ ] Keyword: break
-- [ ] Keyword: continue
-- [ ] Keyword: return
-- [ ] Keyword: call
-- [ ] Variables: var
-- [ ] Variables: usevar
+- [x] Keyword: kill
+- [x] Keyword: break
+- [x] Keyword: continue
+- [x] Keyword: return
+- [x] Keyword: catch
 - [ ] Context: {}
-- [ ] Comment: **
-- [ ] Boolean: true
-- [ ] Boolean: false
-- [ ] None: none
-- [ ] Integers
-- [ ] Decimals
-- [ ] List
-- [ ] Tuples
-- [ ] Built-in function: echo()
-- [ ] Other built-in functions: Will have the same syntax
+- [x] Comment: ::
+- [x] Boolean: true
+- [x] Boolean: false
+- [x] None: none
+- [x] Integers
+- [x] Decimals
+- [x] List
+- [x] Tuples
+- [x] Other built-in functions: Will have the same syntax
 
