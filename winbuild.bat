@@ -1,1 +1,2 @@
-pyinstaller --noconfirm --onedir --console "windows/copra.py" --icon "copra.ico"
+echo Compiling Python code into EXE ...
+pyinstaller --noconfirm --onedir --console --icon "copra.ico"  "M:/mnt/Coding/copra/windows/copra.py"

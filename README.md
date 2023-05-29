@@ -33,7 +33,7 @@ When you place an -o argument after the basic starting arguments, the argument a
 
 ## Compiler Progress
 
-- [x] Basic Lexer (**WIP**)
+- [x] Basic Lexer (**Beta**)
 - [x] Keyword: use
 - [x] Keyword: while
 - [x] Keyword: if
