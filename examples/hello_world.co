@@ -1,0 +1,5 @@
+use sys
+
+if sys.argv[1] != "bye": {
+    print("Hello World!")
+}

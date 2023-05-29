@@ -1,0 +1,19 @@
+print("Hello!")
+
+while true: {
+    userinput = input("I'm feeling: ")
+
+    if userinput == "great": {
+        print("That's cool!")
+        break
+    }
+
+    elif userinput == "bad": {
+        print("Tell me why.")
+        break
+    }
+    else: {
+        print("sorry, i wasn't able to understand you.")
+    }
+
+}
