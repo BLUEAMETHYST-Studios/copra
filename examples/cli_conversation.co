@@ -1,14 +1,14 @@
 print("Hello!")
 
 while true: {
-    userinput = input("I'm feeling: ")
+    $userinput = input("I'm feeling: ")
 
-    if userinput == "great": {
+    if $userinput == "great": {
         print("That's cool!")
         break
     }
 
-    elif userinput == "bad": {
+    elif $userinput == "bad": {
         print("Tell me why.")
         break
     }

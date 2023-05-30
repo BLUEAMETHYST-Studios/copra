@@ -1,10 +1,5 @@
 from sys import argv, exit
-try:
-    from colorama import init, Fore
-except ImportError:
-    print("Following dependency doesn't seem to be installed: colorama")
-    print("Installation command: pip install colorama")
-    exit()
+from colorama import init, Fore
 
 init(autoreset=True)
 
@@ -76,7 +71,43 @@ for ch in chars:
     charsstr = charsstr + ch
 
 print(f"{Fore.WHITE}[INFO] Compiling keywords ...")
-charsreplaced = charsstr.replace("use", "import").replace("&&", "and").replace("::", "#").replace("!!", "not").replace("elseif", "elif").replace("fn", "def").replace("cl", "class").replace("it", "self").replace("kill", "exit()").replace("true", "True").replace("false", "False").replace("none", "None").replace("catch", "except")
+
+charsreplaced = charsstr
+tempstr = charsstr
+
+for multitoken in tempstr.split(" "):
+    print(multitoken)
+    if not "$" in multitoken:
+        if "use" in multitoken:
+            tempstr = tempstr.replace("use", "import", 1)
+        elif multitoken == "!!":
+            tempstr = tempstr.replace("!!", "not", 1)
+        elif multitoken == "&&":
+            tempstr = tempstr.replace("&&", "and", 1)
+        elif multitoken.startswith("::"):
+            tempstr = tempstr.replace("::", "#", 1)
+        elif "elseif" in multitoken:
+            tempstr = tempstr.replace("elseif", "elif", 1)
+        elif "fn" in multitoken:
+            tempstr = tempstr.replace("fn", "def", 1)
+        elif "cl" in multitoken:
+            tempstr = tempstr.replace("cl", "class", 1)
+        elif multitoken.startswith("it"):
+            tempstr = tempstr.replace("it", "self", 1)
+        elif "kill" in multitoken:
+            tempstr = tempstr.replace("kill", "exit()", 1)
+        elif "true" in multitoken:
+            tempstr = tempstr.replace("true", "True", 1)
+        elif "false" in multitoken:
+            tempstr = tempstr.replace("false", "False", 1)
+        elif "none" in multitoken:
+            tempstr = tempstr.replace("none", "None", 1)
+        elif "catch" in multitoken:
+            tempstr = tempstr.replace("catch", "except", 1)
+    else:
+        tempstr = tempstr.replace("$", "var_")
+
+charsreplaced = tempstr
 
 print(f"{Fore.WHITE}[INFO] Compiling brackets ...")
 
