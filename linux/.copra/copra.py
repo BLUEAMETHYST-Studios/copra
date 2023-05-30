@@ -76,7 +76,6 @@ charsreplaced = charsstr
 tempstr = charsstr
 
 for multitoken in tempstr.split(" "):
-    print(multitoken)
     if not "$" in multitoken:
         if "use" in multitoken:
             tempstr = tempstr.replace("use", "import", 1)
