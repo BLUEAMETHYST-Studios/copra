@@ -1,1 +1,0 @@
-[Environment]::SetEnvironmentVariable("Path", $Env:PATH + ";" + $Env:LOCALAPPDATA + "/copra", "User")

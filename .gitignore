@@ -1,3 +1,14 @@
+# folders
 /bin
+/dist
+/build
+
+# specific files
 test.co
 banner.png
+
+# specific filetypes
+*.dll 
+*.exe 
+*.manifest
+*.spec
