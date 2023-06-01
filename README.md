@@ -53,7 +53,7 @@ When you place an -o argument after the basic starting arguments, the argument a
 - [x] Keyword: catch
 - [x] Context: {}
 - [x] Comment: ::
-- [ ] Variables (**IN SOME CASES BUGGED (NEEDS FIX)**)
+- [x] Variables (**Bug fixed, but other bugs are expected to occurr**)
 - [x] Boolean: true
 - [x] Boolean: false
 - [x] None: none
