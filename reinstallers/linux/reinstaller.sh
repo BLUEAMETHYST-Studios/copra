@@ -15,7 +15,13 @@ if [[ ${confirm} != "y" && ${confirm} != "Y" ]]; then
     exit 1
 fi
 
-echo "Making project's directory ..."
+echo "Deleting Copra folder and its contents ..."
+rm -rf /usr/bin/.copra
+
+echo "Deleting Copra Starting script ..."
+rm /usr/bin/copra
+
+echo "Making application's directory ..."
 mkdir /usr/bin/.copra
 
 echo "Copying files ..."
@@ -26,4 +32,3 @@ echo "Making Copra executable ..."
 chmod +x /usr/bin/copra
 
 echo -e "\e[32mInstallation completed!\e[0m"
-
