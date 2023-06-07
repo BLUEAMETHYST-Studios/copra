@@ -51,7 +51,7 @@ When you place an -o argument after the basic starting arguments, the argument a
 - [x] Keyword: continue
 - [x] Keyword: return
 - [x] Keyword: catch
-- [x] Context: {}
+- [ ] Context: {}
 - [x] Comment: ::
 - [x] Variables (**Bug fixed, but other bugs are expected to occurr**)
 - [x] Boolean: true

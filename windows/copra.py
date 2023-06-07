@@ -110,33 +110,36 @@ charsreplaced = tempstr
 
 print(f"{Fore.WHITE}[INFO] Compiling brackets ...")
 
-
 charsreplaced_lines = charsreplaced.splitlines()
-charsfinished_lines = []
-indentation = 0
+fully_replaced = []
+fully_replaced_str = ""
+indentation = ""
 
-for line in charsreplaced_lines:
-    stripped_line = line.strip()
-    
-    if stripped_line == "}":
-        indentation -= 1
-        if indentation < 0:
-            # print(f"{Fore.LIGHTRED_EX}[WARN] A not needed closing bracket was found.") ( bugged right now :-( )
-            indentation = 0
-        continue
-    
-    indented_line = " " * (indentation * 4) + stripped_line
-    
-    if stripped_line == "{":
-        indentation += 1
+def indentationcheck(line):
+    if "{" and "}" in line:
+        print(f"{Fore.LIGHTRED_EX}[WARN] Multiple brackets in one line can cause issues!")
+    if "{" in line:
+        return True
+    elif "}" in line:
+        return True
+    else:
+        return None
 
-    charsfinished_lines.append(indented_line)
+for line in charsreplaced_lines.strip():
+    check = indentationcheck(line=line)
+    if check == True:
+        indentation = indentation + "    "
+    elif check == False:
+        indentation = indentation.replace("    ", "", 1)
+    else:
+        ...
+    print("a" + indentation + "b")
+    fully_replaced.append(indentation + line)
     
-charsfinished = "\n".join(charsfinished_lines)
+for l in fully_replaced:
+    fully_replaced_str = fully_replaced_str + l + "\n"
 
-charsfinished = charsreplaced
-
-charsfinished = charsfinished.replace("}", "").replace("{", "")
+charsfinished = fully_replaced_str.replace("}", "").replace("{", "")
 
 print(f"{Fore.WHITE}[INFO] Finishing string compilation process ...")
 charsfinished = charsfinished.replace("'", '"')
